@@ -10,6 +10,7 @@ import theme from "./src/theme";
 import { SignIn } from "./src/screens/SignIn";
 import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes";
+import { RealmProvider } from "./src/libs/realm";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
@@ -26,7 +27,9 @@ export default function App() {
         <SafeAreaProvider>
           <StatusBar barStyle="light-content" backgroundColor="transparent" translucent />
           <UserProvider fallback={SignIn}>
-            <Routes />
+            <RealmProvider>
+              <Routes />
+            </RealmProvider>
           </UserProvider>
         </SafeAreaProvider>
       </ThemeProvider>
